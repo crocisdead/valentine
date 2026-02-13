@@ -162,3 +162,31 @@
       confettiHearts();
       arena.style.display = "none";
     });
+    function spawnHeart(w, h){
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.textContent = Math.random() > 0.5 ? '💗' : '💞';
+      heart.style.left = (Math.random() * (w - 20)) + "px";
+      heart.style.top = (h - 30) + "px";
+      heart.style.fontSize = (14 + Math.random()*18) + "px";
+      arena.appendChild(heart);
+      setTimeout(() => heart.remove(), 3500);
+    }
+
+    function confettiHearts(){
+      const n = 18;
+      const rect = document.body.getBoundingClientRect();
+      for(let i=0;i<n;i++){
+        const h = document.createElement('div');
+        h.className='heart';
+        h.textContent = ['💖','💘','💝','💗'][Math.floor(Math.random()*4)];
+        h.style.left = (Math.random() * (rect.width - 20)) + "px";
+        h.style.top = (rect.height - 40) + "px";
+        h.style.fontSize = (16 + Math.random()*26) + "px";
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(), 3500);
+      }
+    }
+  </script>
+</body>
+</html>
